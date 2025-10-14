@@ -1,0 +1,125 @@
+.branding-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  z-index: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.slider-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 540px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.logo-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.logo-icon svg {
+  width: 42px;
+  height: 42px;
+  color: #ffffff;
+}
+
+.slider-content .brand-title {
+  font-size: 3.4rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+.slider-content .brand-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.quote-container {
+  margin-top: 2rem;
+}
+
+.quote-text {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.quote-author {
+  font-size: 1rem;
+  opacity: 0.9;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 2;
+}
+
+.slider-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dots .dot.active {
+  background: #ffffff;
+  transform: scale(1.2);
+}
+
+@media (max-width: 1024px) {
+  .slider-content {
+    padding: 2.5rem 1.75rem;
+    max-width: 420px;
+  }
+
+  .slider-content .brand-title {
+    font-size: 3rem;
+  }
+
+  .quote-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .branding-slider {
+    display: none;
+  }
+}

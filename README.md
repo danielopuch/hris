@@ -1,21 +1,32 @@
-# HRIS - Human Resource Information System
+# HRIS - Human Resource Information System v2.0
 
-A comprehensive, intuitive Human Resource Information System built with React, Node.js, Express, and SQLite. Features a clean, modern UI/UX for managing all aspects of HR operations.
+A comprehensive, modern Human Resource Information System built with React, Node.js, Express, and SQLite/MySQL. Features a beautiful, intuitive UI/UX with enhanced functionality for managing all aspects of HR operations.
 
-## Features
+## 🌟 Features
 
 ### Core Functionality
-- **Authentication & Authorization** - Secure login with role-based access control (Admin, Manager, Employee)
-- **Timesheet Tracking** - Employee time entry with supervisor approval workflow
-- **Leave Management** - Request and approve vacation, sick leave, personal days, and unpaid leave
-- **Performance Appraisals** - Comprehensive employee performance review system
-- **Payroll Processing** - Track and manage employee compensation with detailed payroll records
-- **Employee Management** - Complete employee directory with department and supervisor relationships
+- **🔐 Authentication & Authorization** - Secure login with role-based access control (Admin, Manager, Employee)
+- **⏰ Timesheet Tracking** - Employee time entry with supervisor approval workflow
+- **🏖️ Leave Management** - Request and approve vacation, sick leave, personal days, and unpaid leave
+- **📊 Performance Appraisals** - Comprehensive employee performance review system
+- **💰 Payroll Processing** - Track and manage employee compensation with detailed payroll records
+- **👥 Employee Management** - Complete employee directory with department and supervisor relationships
+- **📈 Modern Dashboard** - Real-time analytics, stats, and activity overview
+- **🎨 Enhanced UI/UX** - Professional, responsive design with gradient themes
 
 ### User Roles
-- **Admin** - Full system access, employee management, payroll processing
-- **Manager** - Approve timesheets, leave requests, conduct appraisals
-- **Employee** - Submit timesheets, request leave, view own records
+- **👑 Admin** - Full system access, employee management, payroll processing
+- **👔 Manager** - Approve timesheets, leave requests, conduct appraisals
+- **👤 Employee** - Submit timesheets, request leave, view own records
+
+### What's New in v2.0
+- ✨ Complete UI/UX redesign with modern gradients and animations
+- 🎯 Enhanced dashboard with real-time statistics and quick actions
+- 🔒 Improved security with stronger password hashing (bcrypt rounds: 12)
+- 🗄️ MySQL-ready database architecture (currently using improved SQLite)
+- 👥 Pre-configured demo employees for GHSC-PSM project
+- 📱 Fully responsive design for all devices
+- ⚡ Better performance and loading states
 
 ## Tech Stack
 

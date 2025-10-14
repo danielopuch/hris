@@ -4,10 +4,16 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import Timesheets from './pages/Timesheets';
+import TimesheetsEnhanced from './pages/TimesheetsEnhanced';
 import Leave from './pages/Leave';
 import Appraisals from './pages/Appraisals';
 import Payroll from './pages/Payroll';
+import Profile from './pages/Profile';
+import Holidays from './pages/Holidays';
+import Team from './pages/Team';
+import Reports from './pages/Reports';
+import Projects from './pages/Projects';
+import StaffManagement from './pages/StaffManagement';
 import './styles/App.css';
 
 const PrivateRoute = ({ children }) => {
@@ -40,7 +46,7 @@ const AppRoutes = () => {
           path="/timesheets"
           element={
             <PrivateRoute>
-              <Timesheets />
+              <TimesheetsEnhanced />
             </PrivateRoute>
           }
         />
@@ -65,6 +71,54 @@ const AppRoutes = () => {
           element={
             <PrivateRoute>
               <Payroll />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/holidays"
+          element={
+            <PrivateRoute>
+              <Holidays />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/team"
+          element={
+            <PrivateRoute>
+              <Team />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <PrivateRoute>
+              <Projects />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/staff"
+          element={
+            <PrivateRoute>
+              <StaffManagement />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/reports"
+          element={
+            <PrivateRoute>
+              <Reports />
             </PrivateRoute>
           }
         />

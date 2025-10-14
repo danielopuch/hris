@@ -35,4 +35,12 @@ const isManagerOrAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { verifyToken, isAdmin, isManagerOrAdmin, JWT_SECRET };
+// Check if user is HR, manager or admin
+const isHRManagerOrAdmin = (req, res, next) => {
+  if (req.user.role !== 'admin' && req.user.role !== 'manager' && req.user.role !== 'hr') {
+    return res.status(403).json({ error: 'HR, Manager or Admin access required' });
+  }
+  next();
+};
+
+module.exports = { verifyToken, isAdmin, isManagerOrAdmin, isHRManagerOrAdmin, JWT_SECRET };

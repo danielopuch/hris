@@ -37,3 +37,7 @@ Thumbs.db
 # Testing
 coverage/
 .nyc_output/
+
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md

@@ -1,15 +1,22 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { initDatabase } = require('./database');
+
+// Use improved SQLite database with better security
+const { initDatabase } = require('./database-improved');
 
 // Initialize routes
 const authRoutes = require('./routes/auth');
 const employeeRoutes = require('./routes/employees');
-const timesheetRoutes = require('./routes/timesheets');
+const timesheetRoutes = require('./routes/timesheets-enhanced');
 const leaveRoutes = require('./routes/leave');
 const appraisalRoutes = require('./routes/appraisals');
-const payrollRoutes = require('./routes/payroll');
+const payrollRoutes = require('./routes/payroll-enhanced');
+const profileRoutes = require('./routes/profile');
+const holidaysRoutes = require('./routes/holidays');
+const teamRoutes = require('./routes/team');
+const reportsRoutes = require('./routes/reports');
+const projectsRoutes = require('./routes/projects');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Initialize database
-initDatabase();
+initDatabase().catch(console.error);
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -29,6 +36,11 @@ app.use('/api/timesheets', timesheetRoutes);
 app.use('/api/leave', leaveRoutes);
 app.use('/api/appraisals', appraisalRoutes);
 app.use('/api/payroll', payrollRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/holidays', holidaysRoutes);
+app.use('/api/team', teamRoutes);
+app.use('/api/reports', reportsRoutes);
+app.use('/api/projects', projectsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

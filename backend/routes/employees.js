@@ -1,6 +1,6 @@
 const express = require('express');
-const { db } = require('../database');
-const { verifyToken, isAdmin } = require('../middleware/auth');
+const { db, allQuery, getQuery, runQuery } = require('../database-improved');
+const { verifyToken, isAdmin, isManagerOrAdmin, isHRManagerOrAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -76,33 +76,36 @@ router.post('/', verifyToken, isAdmin, (req, res) => {
   );
 });
 
-// Update employee
-router.put('/:id', verifyToken, isAdmin, (req, res) => {
-  const {
-    first_name, last_name, department, position,
-    supervisor_id, salary, status
-  } = req.body;
+// Update employee - Allow HR managers and admins
+router.put('/:id', verifyToken, isHRManagerOrAdmin, async (req, res) => {
+  try {
+    const {
+      first_name, last_name, department, position,
+      supervisor_id, salary, status
+    } = req.body;
 
-  const query = `
-    UPDATE employees 
-    SET first_name = ?, last_name = ?, department = ?, position = ?,
-        supervisor_id = ?, salary = ?, status = ?
-    WHERE id = ?
-  `;
+    const query = `
+      UPDATE employees 
+      SET first_name = ?, last_name = ?, department = ?, position = ?,
+          supervisor_id = ?, salary = ?, status = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `;
 
-  db.run(
-    query,
-    [first_name, last_name, department, position, supervisor_id, salary, status, req.params.id],
-    function(err) {
-      if (err) {
-        return res.status(500).json({ error: 'Database error' });
-      }
-      if (this.changes === 0) {
-        return res.status(404).json({ error: 'Employee not found' });
-      }
-      res.json({ message: 'Employee updated successfully' });
+    const result = await runQuery(
+      query,
+      [first_name, last_name, department, position, supervisor_id, salary, status, req.params.id]
+    );
+
+    if (result.changes === 0) {
+      return res.status(404).json({ error: 'Employee not found' });
     }
-  );
+
+    const updated = await getQuery('SELECT * FROM employees WHERE id = ?', [req.params.id]);
+    res.json({ message: 'Employee updated successfully', employee: updated });
+  } catch (error) {
+    console.error('Error updating employee:', error);
+    res.status(500).json({ error: 'Failed to update employee' });
+  }
 });
 
 module.exports = router;
